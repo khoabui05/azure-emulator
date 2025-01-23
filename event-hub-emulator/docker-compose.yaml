@@ -4,9 +4,9 @@ services:
     container_name: "eventhubs-emulator"
     image: "mcr.microsoft.com/azure-messaging/eventhubs-emulator:latest"
     volumes:
-      - "${CONFIG_PATH}:/Eventhubs_Emulator/ConfigFiles/Config.json"
+      - "${CONFIG_PATH_EH}:/Eventhubs_Emulator/ConfigFiles/Config.json"
     ports:
-      - "5672:5672"
+      - "5673:5672"
       - "9092:9092"
     environment:
       BLOB_SERVER: azurite
