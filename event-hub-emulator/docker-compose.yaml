@@ -20,7 +20,7 @@ services:
           - "eventhubs-emulator"
   azurite:
     container_name: "azurite"
-    image: "mcr.microsoft.com/azure-storage/azurite:latest"
+    image: "mcr.microsoft.com/azure-storage/azurite:3.34.0"
     ports:
       - "10000:10000"
       - "10001:10001"
