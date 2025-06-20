@@ -35,7 +35,7 @@
         ],
         "Topics": [
           {
-            "Name": "claim-automation-create-new-instruction-dev-topic",
+            "Name": "claim-automation-motor-dev-topic",
             "Properties": {
               "DefaultMessageTimeToLive": "PT1H",
               "DuplicateDetectionHistoryTimeWindow": "PT20S",
