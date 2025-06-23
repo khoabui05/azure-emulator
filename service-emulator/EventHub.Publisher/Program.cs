@@ -25,15 +25,14 @@ namespace EventHub.Publisher
                 using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
 
                 // Generate some sample messages
-                for (int i = 1; i <= 5; i++)
+                for (int i = 1; i <= 1; i++)
                 {
                     // Create a message with some sample data
                     var messageData = new
                     {
-                        MessageId = Guid.NewGuid().ToString(),
-                        MessageNumber = i,
-                        Timestamp = DateTimeOffset.UtcNow,
-                        Content = $"Hello from EventHub Publisher! Message #{i}"
+                        CorrelationId = "a82ba590-f86d-45cf-9ce3-68c4c64b6e29",
+                        QuestionSetId = "2e6bc115-9b8a-424d-9786-c08d5daf5b21",
+                        CreatedDate = DateTimeOffset.UtcNow
                     };
 
                     // Convert the message to JSON
