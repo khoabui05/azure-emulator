@@ -31,6 +31,15 @@
                 "Name": "cg1"
               }
             ]
+          },
+          {
+            "Name": "smk-claimpilot-aff-evh",
+            "PartitionCount": "2",
+            "ConsumerGroups": [
+              {
+                "Name": "cg1"
+              }
+            ]
           }
         ]
       }

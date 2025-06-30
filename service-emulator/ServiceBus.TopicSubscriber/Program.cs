@@ -1,5 +1,6 @@
 using Azure.Messaging.ServiceBus;
 using System;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ class Program
 {
     // Connection string to the Service Bus namespace
     // Using the local Service Bus emulator connection string
-    private const string connectionString = "Endpoint=sb://localhost:5671/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=guest";
+    private const string connectionString = "Endpoint=sb://localhost;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;";
 
     // Name of the topic
     private const string topicName = "create-claim-topic";
@@ -64,14 +65,20 @@ class Program
     {
         try
         {
-            string body = args.Message.Body.ToString();
+            // Parse message body as JSON and format it with indentation
+            var jsonDocument = JsonDocument.Parse(args.Message.Body.ToArray());
+            string body = JsonSerializer.Serialize(
+                jsonDocument.RootElement,
+                new JsonSerializerOptions { WriteIndented = true }
+            );
+
             Console.WriteLine($"Received message: {body}");
 
             // Get any user properties
-            foreach (var prop in args.Message.ApplicationProperties)
-            {
-                Console.WriteLine($"Property {prop.Key}: {prop.Value}");
-            }
+            //foreach (var prop in args.Message.ApplicationProperties)
+            //{
+            //    Console.WriteLine($"Property {prop.Key}: {prop.Value}");
+            //}
 
             // Complete the message to remove it from the subscription
             await args.CompleteMessageAsync(args.Message);

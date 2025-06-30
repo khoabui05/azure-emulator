@@ -8,7 +8,7 @@ class Program
 {
     // Connection string to the Service Bus namespace
     // Using the local Service Bus emulator connection string
-    private const string connectionString = "Endpoint=sb://localhost:5671/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=guest";
+    private const string connectionString = "Endpoint=sb://localhost;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;";
 
     // Name of the topic
     private const string topicName = "create-claim-topic";
